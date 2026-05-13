@@ -1,0 +1,1 @@
+This directory holds all code used for genotyping, from cleaning the raw reads, mapping them to the reference genome, calling genotypes in each individual, then merging together all individuals and filtering.
