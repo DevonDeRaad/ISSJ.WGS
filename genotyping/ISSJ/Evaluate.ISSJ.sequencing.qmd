@@ -12,6 +12,36 @@ embed-resources: true
 
 ### Read in data
 ```{r}
-stats<-read.csv("https://raw.githubusercontent.com/DevonDeRaad/ISSJ.WGS/refs/heads/main/sequenced.sample.info.csv")
+stats<-read.csv("https://raw.githubusercontent.com/DevonDeRaad/ISSJ.WGS/refs/heads/main/genotyping/ISSJ/allsamps.covsummary.csv")
+```
+
+### Visualize and calculate stats
+```{r}
+#vis distribution of stats
+hist(stats$DOC, breaks=100, xlab="Mapped depth of coverage")
+hist(stats$breadth, breaks=100, xlab="Mapped breadth of coverage")
+hist(stats$map.perc, breaks=100, xlab="Percentage of reads mapped")
+
+#isolate poorly sequenced and poorly mapped samples
+stats[stats$DOC < 25,]
+#we're going to drop M_31, which simply didn't generate enough reads to be used (~5.5x coverage). Everyone else should be fine.
+stats[stats$map.perc < 99,]
+#Although it is odd that M_142 mapped at a way lower rate than the rest of the samples, it doesn't seem to have any major impact, DOC is good, and it comes out in a totally reasonable place in the tree. For this reason we will leave it in.
+
+#calculate mean + SD intervals
+mean(stats$DOC)
+sd(stats$DOC)
+mean(stats$DOC)+(sd(stats$DOC))
+mean(stats$DOC)-(sd(stats$DOC))
+
+#calculate mean + SD intervals
+mean(stats$map.perc)
+mean(stats$map.perc)+(sd(stats$map.perc))
+mean(stats$map.perc)-(sd(stats$map.perc))
+
+#calculate mean + SD intervals
+mean(stats$breadth)
+mean(stats$breadth)+(sd(stats$breadth))
+mean(stats$breadth)-(sd(stats$breadth))
 ```
 
