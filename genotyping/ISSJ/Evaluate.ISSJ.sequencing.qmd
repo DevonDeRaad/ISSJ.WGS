@@ -1,0 +1,17 @@
+---
+title: "ISSJ sequencing stats"
+format:
+  html:
+    code-fold: show
+    code-tools: true
+toc: true
+toc-title: Document Contents
+number-sections: true
+embed-resources: true
+---
+
+### Read in data
+```{r}
+stats<-read.csv("https://raw.githubusercontent.com/DevonDeRaad/ISSJ.WGS/refs/heads/main/sequenced.sample.info.csv")
+```
+
